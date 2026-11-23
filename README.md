@@ -40,7 +40,7 @@ SauceDemoTests/
 Yêu cầu: đã cài .NET SDK 10 và Google Chrome.
 
 ```bash
-git clone <link-repo>
+git clone https://github.com/anhduy-dot/SauceDemoTests.git
 cd SauceDemoTests
 dotnet build
 dotnet test
