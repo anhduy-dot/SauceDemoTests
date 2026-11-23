@@ -62,6 +62,21 @@ public abstract class TestBase
     }
 
     /// <summary>
+    /// Cho (tuong minh) toi khi phan tu co mat VA dang hien thi, roi tra ve phan tu do.
+    /// Can thiet vi saucedemo la trang SPA: URL doi truoc khi DOM cua trang moi ve xong.
+    /// </summary>
+    protected IWebElement ChoPhanTuHienThi(By locator, int soGiay = 10)
+    {
+        var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(soGiay));
+        wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+        return wait.Until(d =>
+        {
+            var phanTu = d.FindElement(locator);
+            return phanTu.Displayed ? phanTu : null;
+        })!;
+    }
+
+    /// <summary>
     /// Khi dat bien moi truong SCREENSHOT_DIR, luu anh trang web o cuoi moi test
     /// (lam minh chung trang thai trinh duyet). Khong dat bien -> bo qua.
     /// </summary>
